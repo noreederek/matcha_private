@@ -1,0 +1,12 @@
+ENV=dev
+DB_HOST=127.0.0.1
+DB_USERNAME=root
+DB_PASSWORD=qwerty
+DB_DATABASE=matcha
+DB_PORT=3306
+SEND_IN_BLUE=AXPwdNyVcSpqt6x9
+FRONTEND_URI=http://localhost:8080
+MAPS_TOKEN=AIzaSyA9IAm9t-YucwiN11Ku2UYQ0VVoCfMQIuc
+IPSTACK_TOKEN=f6fce1f3ce3fd1f431b284eee6dc17ce
+
+WEBHOOK_SECRET=somesecretthatisnotthisstringoftext
