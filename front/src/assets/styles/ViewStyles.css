@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.content {
+  height: 50%;
+  margin-top: 110px;
+  margin-bottom: 110px;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.content::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+} 
+
+body {
+  font-family: Montserrat, sans-serif;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+body::-webkit-scrollbar { /* WebKit */
+  width: 0;
+  height: 0;
+}
+
+.content-error {
+  height: 70vh;
+  margin-top: 110px;
+  margin-bottom: 110px;
+}

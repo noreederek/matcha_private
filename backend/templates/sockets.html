@@ -1,0 +1,185 @@
+<script src="/static/socket.io.js"></script>
+<script src="/static/axios.min.js"></script>
+
+<style>
+	#messages {
+		height: 400px;
+		background-color: azure;
+		border: 1px solid black;
+		overflow-y: scroll;
+	}
+
+	.msg {
+		width: 60%;
+	}
+
+	.container {
+		width: 60vw;
+		margin: auto;
+		background: lightblue;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.messages {
+		display: flex;
+		flex-direction: row;
+	}
+
+	#users {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	button {
+		width: 100%;
+		height: 40px;
+		font-size: 1.2em;
+		margin-top: 10px;
+	}
+
+	.button {
+		width: 100%;
+		height: 40px;
+		font-size: 1.2em;
+		margin-top: 10px;
+	}
+
+	input {
+		width: 100%;
+		height: 30px;
+		font-size: 1.16em;
+	}
+
+	.user-container {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		flex-grow: 1;
+		overflow-y: scroll;
+		height: 400px;
+	}
+
+</style>
+
+<div class="container">
+	<div id="sockid"></div>
+	<div class="messages">
+		<div class="msg">
+			<div id="messages"></div>
+		</div>
+		<div class="user-container">
+			<div id="users"></div>
+		</div>
+	</div>
+	<div class="controls">
+		<div id="chat-to"></div>
+		<h3>Token :</h3> <input id="jwt" type="text"><br>
+		<h3>Message :</h3> <input id="text" type="text"><br>
+		<button onclick="refresh(this)">Refresh Client List</button>
+		<button onclick="disconnect(this)">Disconnect</button>
+		<button onclick="connect(this)">Connect</button>
+		<button onclick="send(this)">Send</button>
+	</div>
+</div>
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+
+	var messages = document.getElementById("messages")
+	var input = document.getElementById("text")
+	var users = document.getElementById("users")
+	var sockid = document.getElementById("sockid")
+
+	var send_to = ""
+
+	var currentChatBuddy = ""
+	var socket = io({
+			transportOptions: {
+				polling: {
+					extraHeaders: {
+					'Authorization' : `Bearer`
+				}
+			}
+		}
+		});
+
+	function refresh() {
+		console.log("Getting clients")
+		users.innerHTML = ""
+		axios.get("/clients")
+			.then(resp => {
+				resp.data.forEach(user => {
+					users.innerHTML += `
+						<span class="button"><button id="${user.username}" onclick="select_user(this)">${user.username}</button></span>
+					`
+				});
+			})
+	}
+
+	function select_user(el)
+	{
+		send_to = el.id
+	}
+
+	function disconnect(el)
+	{
+		socket.disconnect()
+	}
+
+	// gwassssserf eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzYyNDYwMTIsIm5iZiI6MTU3NjI0NjAxMiwianRpIjoiNDdkYzk4NzUtY2Y4MC00ZmNiLTg3ZWYtOGM1ZDBkODZlMDBjIiwiZXhwIjoxNTc4ODM4MDEyLCJpZGVudGl0eSI6eyJpZCI6OCwidXNlcm5hbWUiOiJnd2Fzc3Nkc2RzZGVkcmYiLCJlbWFpbCI6ImdsZW5Ad2FzYXNkZXNyZmFsZHNscy5jby56YSJ9LCJ0eXBlIjoicmVmcmVzaCJ9.gjF8iGphdkuyRNaviuJjXW2UE6yMijjHSO5g2dexe5s
+
+	// gwassserf eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzY1NzYyNjIsIm5iZiI6MTU3NjU3NjI2MiwianRpIjoiZjQwOGEwNDMtYjFhMy00MDAyLThhZTktYmY2ZjA0NDBmMWNmIiwiZXhwIjoxNTc5MTY4MjYyLCJpZGVudGl0eSI6eyJpZCI6MywidXNlcm5hbWUiOiJnd2FzZHNlcmYiLCJlbWFpbCI6ImdsZW5Ad2Fkc3NlcmZhbGxzLmNvLnphIn0sInR5cGUiOiJyZWZyZXNoIn0.clURdG7r5Xcah0ZMb9SkGWnY9B9RhwjSNxj1bKzLrvw
+
+	function connect(el)
+	{	
+		var token = document.getElementById("jwt").value
+		console.log(`Bearer ${token}`)
+		socket.io.opts.transportOptions.polling.extraHeaders.Authorization = `Bearer ${token}`
+		socket.connect({forceNew: true})
+		
+	}
+
+	socket.on('disconnect', function() {
+		alert(`Disconnecting active socket`)
+	})
+
+	socket.on('connect', function() {
+		alert(`Connecting socket ${socket.id}`)
+		sockid.innerHTML = `<h1>Socket ID : ${socket.id}</h1>`
+    });
+
+	socket.on('message', function(data) {
+		console.log("Message recieved")
+		messages.innerHTML += data.username + " " + data.message + "<br>"
+	})
+
+	socket.on('connect_failed', function(){
+		messages.innerHTML += "Failed to connect<br>"
+		console.log('Connection Failed');
+	});
+
+	socket.on('error', function(){
+		messages.innerHTML += "Failed to connect<br>"
+		console.log('Connection Failed');
+	});
+
+	function send(elem){
+		console.log("Sending message to" + send_to)
+		messages.innerHTML += input.value + "<br>"
+
+		socket.emit("message", {
+			to : send_to,
+			message : input.value
+			})
+		input.value = ""
+	}
+</script>
