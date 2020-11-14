@@ -2,21 +2,15 @@ from flask import request
 from flask_restful import Resource, abort
 from flask_jwt_extended import get_jwt_identity
 from helpers import jwt_refresh_required
-
 from helpers.genders import genders
 from helpers.email import send_validation_email
-
 from models.user import User, get_full_user
 from models.validation import Validation
-
 import secrets
-
 from helpers import Arguments
-
 import traceback
 
 class UserListResource(Resource):
-
     def post(self):
         """
         Posting to userlist = Registration
@@ -62,9 +56,7 @@ class UserListResource(Resource):
 class UserResource(Resource):
     @jwt_refresh_required
     def get(self, id):
-        
         current_user = get_jwt_identity()
-
         try:
             int(id)
             user = User.get(id=id)

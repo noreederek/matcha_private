@@ -18,7 +18,7 @@ def send_validation_email(user, code):
 
     base = config.frontend_uri
     name = "{0} {1}".format(user.fname, user.lname)
-    print(code)
+    print("http://localhost:8080/validate?code=" + code)
 
     html = """
     <div>

@@ -1,5 +1,5 @@
 genders = [
-    "Male",
-    "Female",
-    "Other"
+    "male",
+    "female",
+    "other"
 ]

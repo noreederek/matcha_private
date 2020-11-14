@@ -67,8 +67,8 @@
       <div v-if="!searchShow">
         <div v-if="loading">
           <div class="mt-5 d-flex flex-column justify-content-center align-items-center">
-            <b-spinner style="width: 5rem; height: 5rem;" class="mt-5" variant="primary"></b-spinner>
-            <div class="text-centered text-primary mt-4">Herding the fish...</div>
+            <b-spinner style="width: 5rem; height: 5rem;" type="grow"  class="mt-5" variant="primary"></b-spinner>
+            <div class="text-centered text-primary mt-4">Search your match...</div>
           </div>
         </div>
         <div v-else>

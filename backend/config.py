@@ -1,6 +1,5 @@
 from pymysql.cursors import DictCursor
 from dotenv import load_dotenv
-
 import os
 
 load_dotenv()
@@ -15,7 +14,6 @@ database = {
     "autocommit"    : True,
     "cursorclass"   : DictCursor
 }
-
 
 environment = os.getenv("ENV")
 

@@ -71,6 +71,7 @@ export default {
     sendMessage: function () {
       socket.call.sendMessageTo(state.messaging_user, this.message)
       socket.refreshMessages()
+      this.message = ""
     }
   },
   created: function () {

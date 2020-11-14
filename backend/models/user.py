@@ -10,7 +10,6 @@ from models.images import Image
 from database import pool
 
 class User(Model):
-
     table_name = "users"
 
     id = Field(int, modifiable=False)
