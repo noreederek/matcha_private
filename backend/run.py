@@ -96,39 +96,11 @@ def get_users():
 
 @app.route("/test")
 def test():
-    return render_template("index.html")
-
-@app.route("/socketstest")
-def socketstest():
-    return render_template("sockets.html")
+    return render_template("map.html")
 
 @app.route("/")
 def documentation():
-
-    docs = []
-
-    for py in [os.path.join("resources", x) for x in os.listdir("resources") if "__" not in x and x.endswith("py")]:
-        with open(py) as f:
-            code = ast.parse(f.read())
-
-        for node in ast.walk(code):
-            if isinstance(node, (ast.FunctionDef, ast.ClassDef, ast.Module)):
-                docstring = ast.get_docstring(node)
-                if docstring:
-
-                    endpoint = docstring.split("\n")[0]
-                    md = "\n".join(docstring.split("\n")[1:])
-                    
-                    docs.append(
-                      {
-                        "endpoint" : endpoint,
-                        "docstring" : markdown(md, extensions=['fenced_code', 'attr_list'])
-                      }
-                    )
-    return render_template("api-docs.html", docs=docs)
-
-
-
+    return render_template("index.html")
 
 def shutdown_server():
     pool.destroy()

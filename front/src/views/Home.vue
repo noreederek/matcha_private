@@ -27,15 +27,15 @@
       <b-button to="/signup" style="width: 200px; margin-top: 100px" class="mx-2" pill>Sign Up</b-button>
     </div>
 
-    <b-modal ref="terms" hide-footer title="Terms of Use">
-      <div class="d-block text-center">
-        <TermsOfUse/>
+    <b-modal ref="terms" style="font-family: Montserrat" hide-footer title="Our Stack">
+      <div class="d-block text-center" style="font-family: Montserrat">
+        <TechStack/>
       </div>
     </b-modal>
 
-    <b-modal ref="privacy" hide-footer title="Privacy Policy">
-      <div class="d-block text-center">
-        <PrivacyPolicy/>
+    <b-modal ref="privacy" style="font-family: Montserrat" hide-footer title="About Us">
+      <div class="d-block text-center" style="font-family: Montserrat">
+        <AboutInfo/>
       </div>
     </b-modal>
       <video autoplay loop id="video-background" muted>
@@ -45,14 +45,14 @@
 </template>
 
 <script>
-import TermsOfUse from '@/components/TermsOfUse.vue'
-import PrivacyPolicy from '@/components/PrivacyPolicy.vue'
+import TechStack from '@/components/TechStack.vue'
+import AboutInfo from '@/components/AboutInfo.vue'
 
 export default {
   name: 'home',
   components: {
-    TermsOfUse,
-    PrivacyPolicy
+    TechStack,
+    AboutInfo
   },
   methods: {
     showModal(ref) {

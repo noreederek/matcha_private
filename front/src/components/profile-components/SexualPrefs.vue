@@ -1,6 +1,7 @@
 <template>
   <div class="mb-4">
-    <h4 style="font-weight: 700" class="my-3" @click="tagsOn()">Sexual Preferences</h4>
+    <h4 style="font-weight: 700" class="my-3" @click="tagsOn()"><b-icon variant="primary" icon="puzzle"></b-icon
+                  > Sexual Preferences</h4>
     <div class="d-flex flex-row flex-wrap justify-content-center my-2" @click="tagsOn()" v-if="!tagsEdit">
       <div v-for="(tag, index) in selectedTags" @click="tagsOn()" :key="index" style="background-color: #e05e1b" class="border text-light rounded-pill mx-1 px-3 py-1 my-1">
         {{ tag.value }}

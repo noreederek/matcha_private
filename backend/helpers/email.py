@@ -1,18 +1,21 @@
-from mailin import Mailin
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 from flask import request
-
 import config
 
-m = Mailin("https://api.sendinblue.com/v2.0", config.send_in_blue)
+mailAPIkey = config.sendgrid
+sg = SendGridAPIClient(mailAPIkey)
 
-def send_mail(name, email, subject, body):
-    data = {
-      "to" : {email : name},
-      "from" : ["no-reply@matchame.co.za", "🔥 Matcha 🔥"],
-      "subject" : subject,
-      "html" : body}
-
-    return m.send_email(data)
+def send_mail(email, subject, body):
+    message = Mail(from_email='mayorovyuri7@gmail.com',\
+      to_emails=email,\
+      subject=subject,\
+      html_content=body)
+    try:
+      response = sg.send(message)
+      return response.status_code
+    except Exception as e:
+      return "Error on mailing service"
 
 def send_validation_email(user, code):
 
@@ -22,15 +25,14 @@ def send_validation_email(user, code):
 
     html = """
     <div>
-      <h3>Hello {name}, welcome to Matcha</h3>
-      <p>Please validate your email by clicking the link below</p>
+      <h3>{name} - Registration</h3>
+      <p>Click on the link below: </p>
       <a href="{base}/validate?code={code}">Verify Email</a>
     </div>
     """.format(name=name, base=base, code=code)
 
-    result = send_mail(name, user.email, "Email Verification", html)
-
-    return result["code"]
+    result = send_mail(user.email, "Email Verification", html)
+    return result
 
 def send_password_reset_email(user, code):
     base = config.frontend_uri
@@ -38,12 +40,11 @@ def send_password_reset_email(user, code):
 
     html = """
     <div>
-      <h3>Hello {name}</h3>
-      <p>To reset your password please use the following wink</p>
+      <h3>Reset password - {name}</h3>
+      <p>To reset your password click on link</p>
       <a href="{base}/reset-password?code={code}">Reset Password</a>
     </div>
     """.format(name=name, base=base, code=code)
 
-    result = send_mail(name, user.email, "Password Reset", html)
-
-    return result["code"]
+    result = send_mail(user.email, "Password Reset", html)
+    return result

@@ -19,7 +19,7 @@ environment = os.getenv("ENV")
 
 frontend_uri = os.getenv("FRONTEND_URI")
 
-send_in_blue = os.getenv("SEND_IN_BLUE")
+sendgrid = os.getenv("SENDGRID")
 
 maps_token = os.getenv("MAPS_TOKEN")
 ipstack = os.getenv("IPSTACK_TOKEN")

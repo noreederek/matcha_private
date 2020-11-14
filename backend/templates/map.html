@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+   <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7ObslXkvGIXZaWS5YMTkYZb0djIRifoE&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+   <title>Document</title>
+</head>
+<body>
+   <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   <script type="text/javascript">
+   var map;
+      function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+         center: { lat: 55.5249, lng: 37.5241 },
+         zoom: 8
+      });
+
+      axios.get("/all-users").then(resp => {
+         console.log(resp)
+         resp.data.forEach(user => {
+            new google.maps.Marker({
+               position: { lat: user.latitude, lng: user.longitude },
+               map: map,
+               title: `${user.fname} ${user.lname}  ${user.latitude} ${user.longitude}`
+            });
+         })
+      })
+      }
+   </script>
+   <div id="map"></div>
+</body>
+</html>

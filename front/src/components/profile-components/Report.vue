@@ -1,11 +1,11 @@
 <template>
   <div>
-    <b-link style="text-decoration: underline" class="text-secondary" @click="showModal('report')">Report User</b-link>
+    <b-link style="text-decoration: underline" class="text-secondary" @click="showModal('report')">Block User</b-link>
 
-    <b-modal ref="report" title="Report User" @ok="report">
-      <div class="text-center my-3">
-        Reporting a user will send a request to admin for review.<br>
-        The admin may choose to block the reported user, after which you will no longer be able to view their profile.
+    <b-modal ref="report" style="font-family: Montserrat" title="Block User" @ok="report">
+      <div class="text-center my-3" style="font-family: Montserrat">
+        Reporting on user will send a request to admin for review<br>
+        The admin may choose to block the reported user
       </div>
       <div class="d-flex flex-column justify-content-center align-items-center text-center">
         <b-form-select
@@ -43,10 +43,10 @@ export default {
     return {
       reasons: [
         { value: null, text: 'Why are you reporting this user?' },
-        { value: "fake profile", text: "This is a fake profile." },
-        { value: "inappropriate content", text: "This user's account has inappropriate content." },
-        { value: "harassment", text: "I feel that this user has harassed me." },
-        { value: "too sexy", text: "This user is too sexy for their shirt." },
+        { value: "fake profile", text: "Fake Profile." },
+        { value: "inappropriate content", text: "Porn in Profile." },
+        { value: "harassment", text: "Sends Me Dickpics." },
+        { value: "too sexy", text: "Too Sexy." },
         { value: "other", text: "Other" }
       ],
       reason: null,

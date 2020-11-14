@@ -91,8 +91,6 @@ def get_server_factory(app):
                     self.sendPollOnlineRequest()
             
         def pollOnline(self, socket):
-            
-            ## TODO check for matches
             payload = {
               "method" : "pollOnlineResponse",
               "content" : [{"id" : x["id"], "username" : x["username"]} for x in self.online]

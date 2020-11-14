@@ -3,7 +3,7 @@
     <form @submit.prevent="changeEmail">
       <div>
         <b-input-group>
-          <p>Changing your current email will log you out. <strong>You will have to VERIFY your new email before logging in again.</strong> Please check your email after clicking submit.</p>
+          <p>After change go to <strong> email and click on sended verify link</strong> You will be routed to login screen.</p>
           <b-form-input v-model="user.email" placeholder="New email here..." required></b-form-input>
 
           <b-input-group-append>

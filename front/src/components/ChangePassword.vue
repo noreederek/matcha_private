@@ -25,14 +25,14 @@
           class="mb-2"
           v-model="old_password"
           type="password"
-          placeholder="Old password here..."
+          placeholder="Old password..."
           required
         ></b-form-input>
         <b-form-input
           class="mb-2"
           v-model="new_password"
           type="password"
-          placeholder="New password here..."
+          placeholder="New password..."
           required
         ></b-form-input>
         <b-button variant="outline-secondary" type="submit"

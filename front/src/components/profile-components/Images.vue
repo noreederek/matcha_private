@@ -38,7 +38,7 @@
           size="lg"
           @click="showModal('uploads')"
         >
-          <b-icon variant="light" class="mb-1 mt-2" icon="pencil"></b-icon>
+          <b-icon variant="light" class="mb-1 mt-2" icon="images"></b-icon>
         </b-button>
         <b-modal
           ref="uploads"
@@ -98,7 +98,7 @@
                 style="width: 80px"
               >
                 <label for="img" style="font-size: 3rem" class=""
-                  ><b-icon variant="primary" icon="plus-circle"></b-icon
+                  ><b-icon variant="primary" icon="image"></b-icon
                   ><span style="font-size: 1rem"></span
                 ></label>
               </div>

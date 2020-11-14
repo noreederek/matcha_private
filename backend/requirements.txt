@@ -22,7 +22,7 @@ pytz==2019.3
 simplejson==3.17.0
 six==1.14.0
 Werkzeug==1.0.1
-Sendinblue==2.0.5.1
+sendgrid==6.4.7
 Twisted==20.3.0
 autobahn==20.6.1
 Flask-Cors==3.0.8

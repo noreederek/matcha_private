@@ -2,7 +2,8 @@
   <div class="container">
     <div>
       <div class="d-flex justify-content-center flex-column align-items-center">
-        <h4 @click="bioOn()" style="font-weight: 700">Bio</h4>
+        <h4 @click="bioOn()" style="font-weight: 700"><b-icon variant="primary" icon="book"></b-icon
+                  > About</h4>
         <div v-if="!bioEdit" @click="bioOn()" class="mx-4">
           {{ user.bio }}
         </div>

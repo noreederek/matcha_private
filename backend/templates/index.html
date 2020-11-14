@@ -1,52 +1,226 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Matcha API Backend</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-   <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7ObslXkvGIXZaWS5YMTkYZb0djIRifoE&callback=initMap&libraries=&v=weekly"
-      defer
-    ></script>
-   <title>Document</title>
-</head>
-<body>
-   <style type="text/css">
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-   <script type="text/javascript">
-   var map;
-      function initMap() {
-      map = new google.maps.Map(document.getElementById("map"), {
-         center: { lat: 33.9249, lng: 18.4241 },
-         zoom: 8
-      });
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
 
-      axios.get("/all-users").then(resp => {
-         console.log(resp)
-         resp.data.forEach(user => {
-            new google.maps.Marker({
-               position: { lat: user.latitude, lng: user.longitude },
-               map: map,
-               title: `${user.fname} ${user.lname}  ${user.latitude} ${user.longitude}`
-            });
-         })
-      })
-      }
-   </script>
-   <div id="map"></div>
-</body>
+							<!-- Header -->
+								<header id="header">
+									<a class="logo"><strong>Matcha API</strong></a>
+								</header>
+
+							<!-- Banner -->
+								<section id="banner">
+									<div class="content">
+										<header>
+											<h1>Backend API</h1>
+										</header>
+										<p>For this project we used Flask, Flask-REST and Twisted<br>
+											Checkout All Users Geoposition and watch API doc<br>
+											Also we have mobile version for Android
+										</p>
+										<ul class="actions">
+											<li><a href="test" class="button big">Watch Map</a></li>
+											<li><a href="#" class="button big">Download App</a></li>
+										</ul>
+									</div>
+									<span class="image object">
+										<img src="static/images/pic10.png" alt="" />
+									</span>
+								</section>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>API Doc</h2>
+									</header>
+									<div>
+													<h4>Queries</h4>
+													<div class="table-wrapper">
+														<table>
+															<thead>
+																<tr>
+																	<th>Query</th>
+																	<th>Description</th>
+																	<th>Type</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td>/users</td>
+																	<td>UserListResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/user/string:id</td>
+																	<td>UserResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/user/current</td>
+																	<td>CurrentUserResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/login</td>
+																	<td>LoginResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/validate/string:code</td>
+																	<td>ValidationResource</td>
+																	<td>POST</td>
+																</tr>
+																<tr>
+																	<td>/validate/resubmit/string:email</td>
+																	<td>ValidationRetryResource</td>
+																	<td>POST</td>
+																</tr>
+																<tr>
+																	<td>/verify-token</td>
+																	<td>VerifyTokenResource</td>
+																	<td>POST</td>
+																</tr>
+																<tr>
+																	<td>/matches</td>
+																	<td>MatchListResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/match/int:user_id</td>
+																	<td>MatchResource</td>
+																	<td>POST</td>
+																</tr>
+																<tr>
+																	<td>/likes</td>
+																	<td>LikesListResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/rating/int:user_id</td>
+																	<td>RatingResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/reset-password-request</td>
+																	<td>PasswordResetRequestResource</td>
+																	<td>POST</td>
+																</tr>
+																<tr>
+																	<td>/reset-password</td>
+																	<td>PasswordChangeResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/images</td>
+																	<td>ImageListResourceGenderListResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/info/genders</td>
+																	<td>GenderListResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/info/interests</td>
+																	<td>InterestsListResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/discover</td>
+																	<td>DiscoveryListResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/api-keys</td>
+																	<td>ApiKeysResource</td>
+																	<td>POST</td>
+																</tr>
+																<tr>
+																	<td>/location</td>
+																	<td>LocationResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/block-requests</td>
+																	<td>BlockRequestsListResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/block-request/int:id</td>
+																	<td>BlockRequestResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/check-blocked/string:username</td>
+																	<td>BlocksResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/views</td>
+																	<td>ViewsListResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/views/viewed-by</td>
+																	<td>ViewedByListResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+																<tr>
+																	<td>/unmatch/int:user_id</td>
+																	<td>UnmatchResource</td>
+																	<td>GET/POST/PUT</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+									</div>
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="test">Maps</a></li>
+										<li><a href="#">Mobile App</a></li>
+									</ul>
+								</nav>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; NDEREK and ADESPINA Team. <a>21School</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/browser.min.js"></script>
+			<script src="static/assets/js/breakpoints.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<script src="static/assets/js/main.js"></script>
+
+	</body>
 </html>

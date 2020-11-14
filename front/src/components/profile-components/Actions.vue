@@ -3,22 +3,22 @@
     <Report class="small mt-1 mb-3" :user="user"/>
     <div v-if="relationship.matched && relationship.liked">
       <b-card class="border-none shadow-sm rounded text-dark" >
-        Things are looking <span class="text-secondary"><strong>HOT</strong></span> in here.<br>You should get chatting.<br><hr>
+        This user <span class="text-secondary"><strong>ALSO MATCH</strong></span> you<br><hr>
         <b-link>Go to chat</b-link><hr>
         <Rate :user="user" /><hr>
-        <b-link @click="unmatch" class="text-danger">UNMATCH</b-link>
+        <b-icon class="text-danger" icon="hand-thumbs-down"></b-icon><b-link @click="unmatch" class="text-danger"> UNMATCH</b-link>
       </b-card>
     </div>
     <div v-else-if="!relationship.matched && relationship.liked">
       <b-card class="border-none shadow-sm rounded text-dark" >
-        You've already <span class="text-secondary" style="font-weight: 700px"><strong>LIKED</strong></span> this user.<br>Fingers crossed they'll like you back.<br><hr>
-        <b-link @click="unmatch" class="text-danger">UNLIKE</b-link>
+        Wait until this user also <span class="text-secondary" style="font-weight: 700px"><strong>MATCH</strong></span> you<br>OR<br><hr>
+        <b-icon class="text-danger" icon="hand-thumbs-down"></b-icon><b-link @click="unmatch" class="text-danger"> UNLIKE</b-link>
       </b-card>
     </div>
     <div v-else-if="!relationship.matched && !relationship.liked">
       <b-card class="border-none shadow-sm rounded text-dark" >
-        This could be the <span class="text-secondary"><strong>ONE</strong></span>.<br>What are you waiting for?<br><hr>
-        <b-link @click="likeUser" class="">LIKE</b-link>
+        Wanna <span class="text-secondary"><strong>CHAT</strong></span> this user?<br><hr>
+        <b-icon class="text-primary" icon="heart"></b-icon><b-link @click="likeUser" class=""> MATCH</b-link>
       </b-card>
     </div>
     <div v-else>

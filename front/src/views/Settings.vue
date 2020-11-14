@@ -6,7 +6,7 @@
     <div class="content">
       <div class="max-w-90 d-flex justify-content-center">
         <b-col sm="auto" md="6" lg="4" class="rounded-lg shadow bg-light">
-          <h3 class="my-3">Settings</h3>
+          <h3 class="my-3"><b-icon variant="primary" icon="gear"></b-icon> Settings</h3>
 
           <div class="mb-4">
             <b-button class="btn-block p-3" v-b-toggle.username>Change Username</b-button>

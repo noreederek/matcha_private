@@ -147,7 +147,7 @@
 <script>
 import NavBar from '@/components/NavBar.vue'
 import Header from '@/components/HeaderNav.vue'
-import ProfileCard from '@/components/ProfileCardRachel.vue'
+import ProfileCard from '@/components/ProfileCardOthers.vue'
 
 import {actions, state} from "@/store"
 import axios from "axios"

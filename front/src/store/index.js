@@ -290,7 +290,7 @@ export const actions = {
         let long = resp.data.longitude || 25.42979;
         return { lat, long };
       } catch (error) {
-        return { lat: -29.764269, long: 25.42979 };
+        return { lat: 55.75124, long: 37.61842 };
       }
     },
     getBrowserPosition: () => {
