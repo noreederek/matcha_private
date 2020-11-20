@@ -2,7 +2,7 @@
 
 TINDER-LIKE APP WITH REAL-TIME CHAT, NOTIFICATION SYSTEM, SMART SELECTION AND SEARCH FOR MATCHES
 
-![matcha_mobile.png](https://github.com/noreederek/matcha_private/blob/master/matcha_mobile.png)
+![matcha_mobile.png](https://raw.githubusercontent.com/noreederek/matcha_private/main/matcha_mobile.png)
 
 Functionality: 
 * User Profile (Gender, Preferences, Pictures, Rating etc)
@@ -12,7 +12,7 @@ Functionality:
 * Documented API and Interactive Map of Users (Admin)
 * GPS Location
 
-![Matcha-video1.gif](https://github.com/noreederek/matcha_private/blob/master/Matcha-video1.gif)
+![Matcha-video1.gif](https://raw.githubusercontent.com/noreederek/matcha_private/main/Matcha-video1.gif)
 
 # Stack
 
