@@ -27,3 +27,4 @@ Twisted==20.3.0
 autobahn==20.6.1
 Flask-Cors==3.0.8
 Markdown==3.2.2
+requests
